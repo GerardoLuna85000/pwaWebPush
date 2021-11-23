@@ -7,7 +7,7 @@ self.addEventListener('push', function(event) {
   
     const title = 'Notificación';
     const options = {
-      body: 'Yay it works.',
+      body: 'Hola soy la notificacion del equipo 2',
       icon: 'images/icons/ico64.png',
       badge: 'images/badge.png'
     };
