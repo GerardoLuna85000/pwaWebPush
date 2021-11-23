@@ -1,5 +1,8 @@
 'use strict';
 
+
+
+
 const applicationServerPublicKey = 'BB1PGPXVlN0erqzxsTcnaehUD9Y36FD8XnFuu9qyHOuDjzFd4Yt9F93jPHVKMXjX-q6JPLYVr4M9Ka1V42ZYQHU';
 
 const pushButton = document.querySelector('.js-push-btn');
@@ -7,6 +10,7 @@ const pushButton = document.querySelector('.js-push-btn');
 let isSubscribed = false;
 let swRegistration = null;
 
+//solo para la key
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
@@ -57,6 +61,7 @@ function initialiseUI() {
 
     if (isSubscribed) {
       console.log('User IS subscribed.');
+      
     } else {
       console.log('User is NOT subscribed.');
     }
@@ -74,9 +79,10 @@ function updateBtn() {
   }
 
   if (isSubscribed) {
-    pushButton.textContent = 'Disable Push Messaging';
+    pushButton.textContent = 'Desactivar push';
+    
   } else {
-    pushButton.textContent = 'Enable Push Messaging';
+    pushButton.textContent = 'Activar push';
   }
 
   pushButton.disabled = false;
@@ -84,7 +90,7 @@ function updateBtn() {
 
 navigator.serviceWorker.register('sw.js')
 .then(function(swReg) {
-  console.log('Service Worker is registered', swReg);
+  console.log('Service Worker Registrado', swReg);
 
   swRegistration = swReg;
   initialiseUI();
@@ -97,7 +103,7 @@ function subscribeUser() {
     applicationServerKey: applicationServerKey
   })
   .then(function(subscription) {
-    console.log('User is subscribed:', subscription);
+    console.log('Usuario suscrito:', subscription);
 
     updateSubscriptionOnServer(subscription);
 
@@ -106,7 +112,7 @@ function subscribeUser() {
     updateBtn();
   })
   .catch(function(err) {
-    console.log('Failed to subscribe the user: ', err);
+    console.log('Falla al suscribir el usuario: ', err);
     updateBtn();
   });
 }

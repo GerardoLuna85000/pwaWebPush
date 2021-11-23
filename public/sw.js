@@ -8,7 +8,7 @@ self.addEventListener('push', function(event) {
     const title = 'Notificación';
     const options = {
       body: 'Yay it works.',
-      icon: 'images/icons/ico.png',
+      icon: 'images/icons/ico64.png',
       badge: 'images/badge.png'
     };
     self.registration.showNotification(title, options);
@@ -16,6 +16,9 @@ self.addEventListener('push', function(event) {
     const notificationPromise = self.registration.showNotification(title, options);
     event.waitUntil(notificationPromise);
   });
+
+  
+  
 
 
   /*
