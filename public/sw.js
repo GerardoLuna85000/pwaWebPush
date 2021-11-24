@@ -17,6 +17,21 @@ self.addEventListener('push', function(event) {
     event.waitUntil(notificationPromise);
   });
 
+  self.addEventListener('notificationclick', function(event) {
+    //---access data from event using event.notification.data---
+    console.log('On notification click: ', event.notification.data);
+    var url = './contact.html';
+
+    //---close the notification---
+    event.notification.close();
+
+    //---open the app and navigate to breaking.html
+    // after clicking the notification---
+    event.waitUntil(
+        clients.openWindow(url)
+    );
+});
+
   
   
 
