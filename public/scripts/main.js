@@ -45,24 +45,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
 
 function initialiseUI() {
 
-  /*
-  pushButton.addEventListener('install', installEvent => {
-    installEvent.waitUntil(
-        caches.open(cachePWA)
-        .then( cacheResh => { 
-            return cacheResh.addAll(assets);
-    })
-    )
-});*/
-/* 
-pushButton.addEventListener('click', function() {
-    pushButton.disabled = true;
-    if (isSubscribed) {
-      // TODO: Unsubscribe user
-    } else {
-      subscribeUser();
-    }
-  }); */
+
 
   pushButton.addEventListener('click', function() {
     pushButton.disabled = true;

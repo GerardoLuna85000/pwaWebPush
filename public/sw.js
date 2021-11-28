@@ -33,20 +33,58 @@ self.addEventListener('push', function(event) {
 });
 
   
-  
 
 
-  /*
-  const cachePWA = 'cache-site-v1';
-
+const cachePWA = 'cache-site-v1';
 const assets = [
-    "/",
+    './',
+    './index.html',
+    './generic.html',
+    './elements.html',
+    './contact.html'
+];
+
+self.addEventListener('install', installEvent => {
+    installEvent.waitUntil(
+        caches.open(cachePWA)
+        .then( cacheResh => { 
+            return cacheResh.addAll(assets);
+    })
+    )
+    console.log('pruebs');
+});
+
+self.addEventListener('fetch', fetchEvent => {
+    console.log(fetchEvent.request.url);
+    fetchEvent.respondWith(
+        caches.open(cachePWA).then(cache => {
+            return cache.match(fetchEvent.request).then(response => {
+                return response || fetch(fetchEvent.request).then( response => {
+                    cache.put(fetchEvent.request, response.clone());
+                });
+            });
+        })
+    )
+});
+
+self.addEventListener('activate', e => {
+    console.log('Service Worker Activado');
+
+    console.log(e);
+
+
+});
+
+
+
+
+/**  "/",
     "/index.html",
     "/contac.html",
     "/elements.html",
     "/generic.html",
     "/css/style.css",
-    "/js/app.js",
+    "/assets/scripts/main.js",
     "assets/css/images/overlay.png",
     "assets/css/fontawesome-all.min.css",
     "assets/css/main.css",
@@ -65,28 +103,4 @@ const assets = [
     "images/pic05.jpg",
     "img/icons/ico32.png",
     "img/icons/ico64.png",
-    "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-];
-
-self.addEventListener('install', installEvent => {
-    installEvent.waitUntil(
-        caches.open(cachePWA)
-        .then( cacheResh => { 
-            return cacheResh.addAll(assets);
-    })
-    )
-});
-
-self.addEventListener('fetch', fetchEvent => {
-    //console.log(fetchEvent.request.url);
-    fetchEvent.respondWith(
-        caches.open(cachePWA).then(cache => {
-            return cache.match(fetchEvent.request).then(response => {
-                return response || fetch(fetchEvent.request).then( response => {
-                    cache.put(fetchEvent.request, response.clone());
-                });
-            });
-        })
-    )
-});
-*/
+    "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" */
