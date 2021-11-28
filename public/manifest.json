@@ -6,8 +6,8 @@
     "lang": "en_USA",
     "display": "standalone",
     "orientation": "portrait",
-    "theme_color": "#ccc",
-    "background_color": "#2271b3",
+    "theme_color" : "#f69435",
+    "background_color" : "#f69435",
     "icons": [
         {
             "src":"assets/images/icons/ico16.png",
