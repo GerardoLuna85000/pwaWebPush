@@ -7,7 +7,7 @@ self.addEventListener('push', function(event) {
   
     const title = 'Notificación';
     const options = {
-      body: 'Hola soy la notificacion del equipo 2',
+      body: 'Hola soy la notificacion del equipo 2, Me envío al presionar PUSH en el SW',
       icon: 'images/icons/ico64.png',
       badge: 'images/badge.png'
     };

@@ -112,6 +112,8 @@ function subscribeUser() {
     isSubscribed = true;
 
     updateBtn();
+    //NOTIFICACION DESPUES DEL REGISTRO DEL USUARIO SUBSCRIPTION
+    showNotification('Soy una notificación en automático', 'Mirame!');
   })
   .catch(function(err) {
     console.log('Falla al suscribir el usuario: ', err);
@@ -133,3 +135,53 @@ function updateSubscriptionOnServer(subscription) {
     subscriptionDetails.classList.add('is-invisible');
   }
 }
+
+
+//ENVIA LA NOTIFICACION EN AUTOMÁTICO
+function showNotification(title, message) {
+  if ('Notification' in window) {
+    navigator.serviceWorker.ready.then(registration => {
+      registration.showNotification(title, {
+        body: message,
+        tag: 'vibration-sample',
+        badge: '../images/badge.png',
+      });
+    });
+  }
+}
+self.addEventListener('notificationclick', function(event) {
+  //---access data from event using event.notification.data---
+  console.log('On notification click: ', event.notification.data);
+  var url = './contact.html';
+
+  //---close the notification---
+  event.notification.close();
+
+  //---open the app and navigate to breaking.html
+  // after clicking the notification---
+  event.waitUntil(
+      clients.openWindow(url)
+  );
+});
+
+
+
+
+
+/*TRAIDO DE SW.JS PARA PRUEBAS
+self.addEventListener('click', function(event) {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
+
+  const title = 'Notificación';
+  const options = {
+    body: 'Hola soy la notificacion del equipo 2',
+    icon: 'images/icons/ico64.png',
+    badge: 'images/badge.png'
+  };
+  self.registration.showNotification(title, options);
+
+  const notificationPromise = self.registration.showNotification(title, options);
+  event.waitUntil(notificationPromise);
+});
+*/
