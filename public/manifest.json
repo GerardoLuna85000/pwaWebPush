@@ -1,6 +1,6 @@
 {
     "name" : "Prueba de PWA",
-    "short_name": "PWA",
+    "short_name": "IPRO Services",
     "start_url": "/",
     "description" : "Aplicación de prueba de PWA",
     "lang": "en_USA",
@@ -10,17 +10,22 @@
     "background_color" : "#f69435",
     "icons": [
         {
-            "src":"assets/images/icons/ico16.png",
+            "src":"images/icons/ico16.png",
             "sizes":"16x16",
             "type": "image/png"
         },
         {
-            "src":"assets/images/icons/ico32.png",
+            "src":"images/icons/ico32.png",
             "sizes":"32x32",
             "type": "image/png"
         },
         {
-            "src":"assets/images/icons/ico64.png",
+            "src":"images/icons/ico64.png",
+            "sizes":"64x64",
+            "type": "image/png"
+        },
+        {
+            "src":"images/icons/ico512.png",
             "sizes":"64x64",
             "type": "image/png"
         }
