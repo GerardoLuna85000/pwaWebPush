@@ -168,6 +168,7 @@ self.addEventListener('notificationclick', function(event) {
 
 
 
+
 /*TRAIDO DE SW.JS PARA PRUEBAS
 self.addEventListener('click', function(event) {
   console.log('[Service Worker] Push Received.');
